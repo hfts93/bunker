@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Генератор характеристик для игры в бункер</title>
+</head>
+<body>
+    <h1>Генератор характеристик для игры в бункер</h1>
+    <button onclick="generateCharacteristics()">Сгенерировать характеристики</button>
+    <div id="characteristics"></div>
+
+    <script>
+        function generateCharacteristics() {
+            const bioCharacteristics = {
+                "Имя": ["Анна", "Иван", "Мария", "Петр", "Елена"],
+                "Возраст": Math.floor(Math.random() * 70) + 10,
+                "Пол": Math.random() < 0.5 ? "Мужской" : "Женский",
+                "Группа крови": ["A", "B", "AB", "0"][Math.floor(Math.random() * 4)]
+            };
+
+            const healthStatus = ["Здоров/а", "Легкая травма", "Средняя травма", "Тяжелая травма"];
+            const phobia = ["Высота", "Темнота", "Открытые пространства", "Пауки", "Змеи"];
+            const hobby = ["Рисование", "Чтение", "Садоводство", "Рыбалка", "Фотография"];
+            const character = ["Спокойный", "Вспыльчивый", "Оптимистичный", "Пессимистичный", "Амбициозный"];
+
+            const height = Math.floor(Math.random() * 77) + 135;
+            const weight = Math.floor(Math.random() * 119) + 32;
+
+        const additionalInfo = {
+            "Профессия": ["Врач", "Инженер", "Учитель", "Фермер", "Художник"],
+            "Образование": ["Высшее", "Среднее специальное", "Среднее"],
+            "Семейное положение": ["Женат/Замужем", "Холост/Не замужем"]
+            };
+
+            const knowledge = ["Медицинские", "Инженерные", "Военные", "Сельскохозяйственные", "Химические"];
+            const baggage = ["Еда и вода", "Аптечка", "Оружие и боеприпасы", "Коммуникационное оборудование"];
+            const actionMap = ["Исследовать окрестности", "Заключить союз с другими выжившими", "Найти укрытие"];
+            const conditionMap = ["Недостаток пищи и воды", "Угроза радиации", "Атака мутантов", "Конфликты с другими выжившими"];
+
+        let characteristicsHTML = "<h2>Био характеристики:</h2>";
+        for (const [key, value] of Object.entries(bioCharacteristics)) {
+            characteristicsHTML += `<p>${key}: ${value}</p>`;
+            }
+
+            characteristicsHTML += "<h2>Состояние здоровья:</h2>";
+            characteristicsHTML += `<p>${healthStatus[Math.floor(Math.random() * 4)]}</p>`;
+
+            characteristicsHTML += "<h2>Фобия:</h2>";
+            characteristicsHTML += `<p>${phobia[Math.floor(Math.random() * 5)]}</p>`;
+
+            characteristicsHTML += "<h2>Хобби:</h2>";
+            characteristicsHTML += `<p>${hobby[Math.floor(Math.random() * 5)]}</p>`;
+
+            characteristicsHTML += "<h2>Характер:</h2>";
+            characteristicsHTML += `<p>${character[Math.floor(Math.random() * 5)]}</p>`;
+
+        characteristicsHTML += "<h2>Форма:</h2>";
+        characteristicsHTML += `<p>Рост: ${height} см</p>`;
+        characteristicsHTML += `<p>Вес: ${weight} кг</p>`;      
+            characteristicsHTML += "<h2>Дополнительная информация:</h2>";
+            for (const [key, value] of Object.entries(additionalInfo)) {
+                characteristicsHTML += `<p>${key}: ${value[Math.floor(Math.random() * value.length)]}</p>`;
+            }
+
+            characteristicsHTML += "<h2>Знания:</h2>";
+            characteristicsHTML += `<p>${knowledge[Math.floor(Math.random() * 5)]}</p>`;            
+            characteristicsHTML += "<h2>Багаж:</h2>";
+            characteristicsHTML += `<p>${baggage[Math.floor(Math.random() * 4)]}</p>`;
+
+            characteristicsHTML += "<h2>Карта действия:</h2>";
+            characteristicsHTML +=
+
+`<p>${actionMap[Math.floor(Math.random() * 3)]}</p>`;
+
+            characteristicsHTML += "<h2>Карта условия:</h2>";
+            characteristicsHTML += `<p>${conditionMap[Math.floor(Math.random() * 4)]}</p>`;
+
+            document.getElementById("characteristics").innerHTML = characteristicsHTML;
+        }
+    </script>
+</body>
+</html>
